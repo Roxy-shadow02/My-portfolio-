@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sathiya Bhama B | Software Testing Portfolio</title>
+<style>
+:root{--white:#f8fafc;--navy:#172554;--blue:#1e3a8a;--gold:#c9a227;--ink:#0f172a;--muted:#64748b;--line:#e2e8f0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--white);color:var(--ink);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:10;background:rgba(248,250,252,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1120px;margin:auto;padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:900;letter-spacing:1px;color:var(--navy)}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:24px;font-size:14px;font-weight:700;color:var(--muted)}
+.nav-links a:hover{color:var(--blue)}
+.hero{max-width:1120px;margin:auto;padding:100px 28px 80px;display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center;position:relative}
+.kicker{color:var(--gold);font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(48px,8vw,92px);line-height:.98;color:var(--navy);margin:18px 0}
+h1 em{font-style:normal;color:var(--gold)}
+.hero p{font-size:19px;max-width:620px;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;padding:13px 20px;border-radius:8px;font-weight:800;border:1px solid var(--navy);transition:.25s}
+.btn.primary{background:var(--navy);color:white}
+.btn.secondary{color:var(--navy);background:white}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px #17255418}
+.hero-card{min-height:330px;background:var(--navy);border-radius:24px;padding:28px;color:white;position:relative;overflow:hidden;box-shadow:18px 18px 0 #c9a227}
+.hero-card:before{content:"";position:absolute;width:260px;height:260px;border:1px solid #ffffff40;border-radius:50%;right:-80px;top:-70px;animation:orbit 18s linear infinite}
+.hero-card:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #c9a22799;border-radius:50%;left:-60px;bottom:-60px;animation:orbit 12s linear infinite reverse}
+.code{font-family:Consolas,monospace;color:#dbeafe;font-size:15px;position:relative;z-index:1}
+.code .gold{color:#f8d978}
+.status{margin-top:35px;border-top:1px solid #ffffff33;padding-top:18px;display:flex;justify-content:space-between;gap:12px;position:relative;z-index:1}
+.status strong{color:#f8d978}
+section{max-width:1120px;margin:auto;padding:78px 28px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:30px}
+.section-head h2{font-size:40px;color:var(--navy);line-height:1.1}
+.section-head p{max-width:500px;color:var(--muted)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:28px}
+.panel h3{color:var(--navy);margin-bottom:12px}
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.skill{padding:9px 13px;border:1px solid #cbd5e1;border-radius:999px;background:#fff;color:var(--blue);font-weight:700;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.project{background:white;border:1px solid var(--line);border-radius:16px;padding:26px;transition:.25s;position:relative}
+.project:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 15px 35px #17255412}
+.project .num{color:var(--gold);font-weight:900;font-size:13px;letter-spacing:2px}
+.project h3{color:var(--navy);font-size:22px;margin:8px 0}
+.project p{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.tag{font-size:12px;background:#eff6ff;color:var(--blue);padding:5px 9px;border-radius:5px;font-weight:800}
+.achievements{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.achievement{background:var(--navy);color:white;border-radius:16px;padding:25px;position:relative;overflow:hidden}
+.achievement:after{content:"✦";position:absolute;right:20px;top:12px;font-size:55px;color:#ffffff16}
+.achievement h3{color:#f8d978;margin:10px 0}
+.achievement p{color:#dbeafe;font-size:14px}
+.contact{background:var(--navy);color:white;border-radius:22px;padding:42px;display:flex;justify-content:space-between;align-items:center;gap:30px}
+.contact h2{font-size:38px;line-height:1.1;color:white}
+.contact p{color:#dbeafe;margin-top:12px}
+.contact a{color:#f8d978;font-weight:800}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:none}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:65px;gap:35px}.about,.grid{grid-template-columns:1fr}.achievements{grid-template-columns:1fr}.nav-links{display:none}.contact{flex-direction:column;align-items:flex-start}.hero-card{box-shadow:10px 10px 0 #c9a227}section{padding:55px 22px}.hero{padding-left:22px;padding-right:22px}.section-head{display:block}.section-head h2{margin-bottom:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Enhanced visual motion */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;
+  background-image:linear-gradient(rgba(23,37,84,.035) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(23,37,84,.035) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+body::after{
+  content:"";position:fixed;width:420px;height:420px;border-radius:50%;
+  right:-180px;top:120px;pointer-events:none;z-index:-1;
+  background:radial-gradient(circle,rgba(201,162,39,.16),transparent 68%);
+  animation:floatBlob 16s ease-in-out infinite alternate;
+}
+.hero::before,.hero::after{
+  content:"";position:absolute;border-radius:50%;pointer-events:none;
+  border:1px solid rgba(201,162,39,.28);
+}
+.hero::before{width:240px;height:240px;left:-150px;top:20px;animation:spinSlow 30s linear infinite}
+.hero::after{width:90px;height:90px;right:38%;bottom:12px;background:rgba(201,162,39,.08);animation:floatBlob 8s ease-in-out infinite alternate}
+.hero-card{animation:cardFloat 7s ease-in-out infinite}
+.hero-card .code{animation:fadeInCode 1.2s ease both}
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;transform:translateX(-110%);background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);transition:transform .6s}
+.btn:hover::after{transform:translateX(110%)}
+.card,.project,.skill,.achievement{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.card:hover,.project:hover,.skill:hover,.achievement:hover{transform:translateY(-7px);box-shadow:0 18px 35px rgba(23,37,84,.12);border-color:rgba(201,162,39,.65)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.skill-bar{overflow:hidden}
+.skill-bar span{display:block;width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.skill-bar.animate span{width:var(--skill-width)}
+.cursor{display:inline-block;color:var(--gold);animation:blink 1s steps(2,end) infinite}
+.floating-badge{position:absolute;right:22px;bottom:22px;padding:9px 13px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.09);font-size:12px;font-weight:800;letter-spacing:.5px;animation:badgeFloat 4s ease-in-out infinite}
+.back-top{position:fixed;right:22px;bottom:22px;z-index:20;width:44px;height:44px;border:0;border-radius:50%;background:var(--navy);color:white;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(12px);transition:.3s;box-shadow:0 10px 25px rgba(23,37,84,.22)}
+.back-top.show{opacity:1;pointer-events:auto;transform:none}
+@keyframes cardFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(.5deg)}}
+@keyframes floatBlob{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-35px,35px,0) scale(1.12)}}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+@keyframes fadeInCode{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="logo" href="#home">SATHIYA<span>.</span></a><div class="nav-links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a></div></div></nav>
+
+<header class="hero" id="home">
+<div class="reveal">
+<div class="kicker">Software Testing Fresher</div>
+<h1>Quality is<br>not a <em>guess.</em></h1>
+<p>Hi, I'm <strong>Sathiya Bhama B</strong> — a curious learner focused on Manual Testing, Selenium, Java and SQL, with a passion for building reliable digital experiences.</p>
+<div class="actions"><a class="btn primary" href="#projects">Explore My Work</a><a class="btn secondary" href="#contact">Let's Connect</a></div>
+</div>
+<div class="hero-card reveal">
+<div class="code"><span class="gold">class</span> QAEngineer {<br><br>&nbsp;&nbsp;String name = <span class="gold">"Sathiya Bhama"</span>;<br>&nbsp;&nbsp;String focus = <span class="gold">"Quality Assurance"</span>;<br><br>&nbsp;&nbsp;boolean test(String build) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return findBugs(build);<br>&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;String mindset = <span class="gold">"Learn. Test. Improve."</span>;<br>}<br><br><span class="gold">// ready to grow</span></div>
+<div class="status"><span>STATUS: <strong>OPEN TO WORK</strong></span><span>QA / TESTING</span></div>
+</div>
+</header>
+
+<section class="reveal" id="about" class="reveal"><div class="section-head"><h2>About me</h2><p>A practical learner who enjoys understanding how applications work, finding issues and improving user experience.</p></div><div class="about"><div class="panel"><h3>My approach</h3><p>I bring knowledge of SDLC, STLC, test case design, functional testing, smoke testing, sanity testing, regression testing, UI testing and defect life cycle processes. I am building my automation skills through Selenium WebDriver and Core Java.</p></div><div class="panel"><h3>Education</h3><p><strong>Master of NT & IT</strong><br>St. John's College, Palayamkottai<br>2023–2025 · CGPA 7.8</p><br><p><strong>Bachelor of Information Technology</strong><br>Sri Sarada College, Ariyakulam<br>2020–2023 · CGPA 7.5</p></div></div></section>
+
+<section class="reveal" id="skills" class="reveal"><div class="section-head"><h2>Skills & toolkit</h2><p>The tools and concepts I am learning and applying in projects.</p></div><div class="panel"><div class="skills"><span class="skill">Manual Testing</span><span class="skill">Functional Testing</span><span class="skill">Smoke Testing</span><span class="skill">Sanity Testing</span><span class="skill">Regression Testing</span><span class="skill">UI Testing</span><span class="skill">Test Case Design</span><span class="skill">Defect Life Cycle</span><span class="skill">SDLC / STLC</span><span class="skill">Selenium WebDriver</span><span class="skill">XPath</span><span class="skill">CSS Selectors</span><span class="skill">Core Java</span><span class="skill">SQL</span><span class="skill">MySQL</span><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span><span class="skill">Bootstrap</span><span class="skill">Responsive Design</span></div></div></section>
+
+<section class="reveal" id="projects" class="reveal"><div class="section-head"><h2>Selected projects</h2><p>Hands-on work across testing, front-end development, AI concepts and hardware integration.</p></div><div class="grid">
+<article class="project"><div class="num">01 / TESTING</div><h3>E-Commerce Web Application Testing</h3><p>Designed and executed 80+ test cases across Login, Registration, Product Search, Product Details, Cart, Checkout and Payment. Practiced functional, smoke, sanity, regression and UI testing.</p><div class="tags"><span class="tag">80+ Test Cases</span><span class="tag">Manual Testing</span><span class="tag">Defect Reporting</span></div></article>
+<article class="project"><div class="num">02 / FRONT-END</div><h3>SnowTech Academy</h3><p>Developed a responsive academy website with Home, About, Courses, Login and Contact pages. Implemented navigation, forms, interactive elements and responsive layouts using HTML, CSS, JavaScript and Bootstrap.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span></div></article>
+<article class="project"><div class="num">03 / AI PRESENTATION</div><h3>Animal Recognition Using Deep Learning</h3><p>Worked on an academic project focused on animal detection using Deep Learning for wildlife monitoring, including image recognition concepts and model output evaluation.</p><div class="tags"><span class="tag">Deep Learning</span><span class="tag">Animal Detection</span><span class="tag">Paper Presentation</span></div></article>
+<article class="project"><div class="num">04 / INTERNSHIP</div><h3>Metal Detection System</h3><p>Completed an internship project using Arduino hardware and sensors to detect metal objects, with JavaScript used for interface and control logic.</p><div class="tags"><span class="tag">Arduino</span><span class="tag">Sensors</span><span class="tag">JavaScript</span></div></article>
+<article class="project"><div class="num">05 / WEB DESIGN</div><h3>Bakery Website</h3><p>Developed a responsive bakery website with user-friendly layouts, navigation and interactive web elements, focusing on consistent UI behaviour.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
+</div></section>
+
+<section class="reveal" id="achievements" class="reveal"><div class="section-head"><h2>Achievements</h2><p>Milestones that reflect curiosity, presentation skills and continuous learning.</p></div><div class="achievements"><article class="achievement"><div>🏆</div><h3>2nd Prize</h3><p>Presented a Home Automation project during undergraduate studies and secured second prize.</p></article><article class="achievement"><div>✦</div><h3>Paper Presentation</h3><p>Presented a technical paper on Animal Detection Using Deep Learning for wildlife monitoring.</p></article><article class="achievement"><div>⌨</div><h3>Junior Typewriting</h3><p>Successfully completed Junior Grade Typewriting.</p></article></div></section>
+
+<section class="reveal" id="contact" class="reveal"><div class="contact"><div><div class="kicker">Let's connect</div><h2>Ready to learn,<br>test and grow.</h2><p>Open to entry-level Software Tester, QA Tester and Test Engineer opportunities.</p></div><div><p>Email</p><a href="mailto:bsathiyabhama@gmail.com">bsathiyabhama@gmail.com</a><p style="margin-top:14px">Phone</p><a href="tel:7603901980">7603901980</a></div></div></section>
+<footer>© 2026 Sathiya Bhama B · Built with curiosity and a quality mindset.</footer>
+<script>
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+<button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+<script>
+(function(){
+  const reveals = document.querySelectorAll('.reveal');
+  const topButton = document.getElementById('backTop');
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.12});
+    reveals.forEach(el=>observer.observe(el));
+  } else {
+    reveals.forEach(el=>el.classList.add('visible'));
+  }
+
+  window.addEventListener('scroll',()=>{
+    if(topButton) topButton.classList.toggle('show',window.scrollY>500);
+  },{passive:true});
+
+  if(topButton){
+    topButton.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  }
+
+  // Lightweight typing effect for the hero supporting line, if present.
+  const target = document.querySelector('[data-typing]');
+  if(target && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const text = target.textContent;
+    target.textContent='';
+    let i=0;
+    const type=()=>{ if(i<text.length){target.textContent+=text.charAt(i++);setTimeout(type,28);} };
+    type();
+  }
+})();
+</script>
+
+</body>
+</html>
